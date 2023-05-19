@@ -311,17 +311,67 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        ArrayListDemo();
-        LinkedListDemo();
-        HashSetDemo();
-        TreeSetDemo();
-        ArrayDequeDemo();
-        IteratorDemo();
-        ForEachDemo();
-        SpliteratorDemo();
-        MailListExample();
-        HashMapDemo();
-        TreeMapDemo();
-        TreeMapDemoComparator();
+        Scanner scan = new Scanner(System.in);
+        System.out.println();
+
+        String methods = """
+                1)       ArrayListDemo();
+                2)       LinkedListDemo();
+                3)       HashSetDemo();
+                4)       TreeSetDemo();
+                5)       ArrayDequeDemo();
+                6)       IteratorDemo();
+                7)       ForEachDemo();
+                8)       SpliteratorDemo();
+                9)       MailListExample();
+                10)      HashMapDemo();
+                11)      TreeMapDemo();
+                12)      TreeMapDemoComparator();
+                """;
+
+        System.out.println("Check methods:\n" + methods);
+        System.out.println("Input: ");
+
+        int answer = scan.nextInt();
+
+        switch (answer) {
+            case 1:
+                ArrayListDemo();
+                break;
+            case 2:
+                LinkedListDemo();
+                break;
+            case 3:
+                HashSetDemo();
+                break;
+            case 4:
+                TreeSetDemo();
+                break;
+            case 5:
+                ArrayDequeDemo();
+                break;
+            case 6:
+                IteratorDemo();
+                break;
+            case 7:
+                ForEachDemo();
+                break;
+            case 8:
+                SpliteratorDemo();
+                break;
+            case 9:
+                MailListExample();
+                break;
+            case 10:
+                HashMapDemo();
+                break;
+            case 11:
+                TreeMapDemo();
+                break;
+            case 12:
+                TreeMapDemoComparator();
+                break;
+            default: System.out.println("Error!\n");
+        }
     }
 }
