@@ -310,6 +310,113 @@ public class Main {
                 tm.get("John Doe"));
     }
 
+    public static void AlgoritmhsDemo() {
+        LinkedList<Integer> ll = new LinkedList<Integer>();
+
+        ll.add(-11);
+        ll.add(20);
+        ll.add(-20);
+        ll.add(8);
+
+        Comparator<Integer> r = Collections.reverseOrder();
+
+        Collections.sort(ll, r);
+
+        System.out.print("List sort reverse: ");
+
+        for(int i : ll)
+            System.out.print(i + " ");
+
+        System.out.println();
+
+        Collections.shuffle(ll);
+
+        System.out.print("List shuffle: ");
+        for(int i : ll)
+            System.out.print(i + " ");
+        System.out.println();
+
+        System.out.print("Max value: " + Collections.max(ll));
+        System.out.print("Min value: " + Collections.min(ll));
+    }
+
+    public static void VectorDemo() {
+        Vector<Integer> v = new Vector<Integer>();
+
+        System.out.println("Size vector: " + v.size());
+        System.out.println("Capacity vector: " + v.capacity());
+
+        v.addElement(1);
+        v.addElement(2);
+        v.addElement(3);
+        v.addElement(4);
+
+        System.out.println("Capacity: " + v.capacity());
+        v.addElement(5);
+        System.out.println("Capacity: " + v.capacity());
+        v.addElement(6);
+        v.addElement(7);
+        System.out.println("Capacity: " + v.capacity());
+        v.addElement(9);
+        v.addElement(10);
+        System.out.println("Capacity: " + v.capacity());
+        v.addElement(11);
+        v.addElement(12);
+        System.out.println("First element: " + v.firstElement());
+        System.out.println("Last element: " + v.lastElement());
+
+        if(v.contains(3))
+            System.out.print("Vector have element 3");
+
+        Enumeration<Integer> vEnum = v.elements();
+
+        System.out.println("\nElements vector: ");
+        while (vEnum.hasMoreElements())
+            System.out.print(vEnum.nextElement() + " ");
+        System.out.println();
+
+        // Use iterator for example
+        Iterator<Integer> vItr = v.iterator();
+
+        System.out.print("\nElements vector: ");
+        while (vItr.hasNext())
+            System.out.print(vItr.next() + " ");
+        System.out.println();
+    }
+
+    // functions for StackDemo()
+    public static void showpush(Stack<Integer> st, int a) {
+        st.push(a);
+        System.out.println("push(" + a +")");
+        System.out.print("Stack: " + st);
+    }
+
+    public static void showpop(Stack<Integer> st) {
+        System.out.print("pop -> ");
+        Integer a = st.pop();
+
+        System.out.println(a);
+        System.out.println("Stack: " + st);
+    }
+
+    public static void StackDemo() {
+        Stack<Integer> st = new Stack<Integer>();
+
+        System.out.println("Stack: " + st);
+        showpush(st, 42);
+        showpush(st, 66);
+        showpush(st, 90);
+        showpop(st);
+        showpop(st);
+        showpop(st);
+
+        try {
+            showpop(st);
+        } catch (EmptyStackException e) {
+            System.out.println("Stack Empty.");
+        }
+    }
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println();
@@ -327,6 +434,9 @@ public class Main {
                 10)      HashMapDemo();
                 11)      TreeMapDemo();
                 12)      TreeMapDemoComparator();
+                13)      AlgoritmhsDemo();
+                14)      VectorDemo();
+                15)      StackDemo();
                 """;
 
         System.out.println("Check methods:\n" + methods);
@@ -370,6 +480,15 @@ public class Main {
                 break;
             case 12:
                 TreeMapDemoComparator();
+                break;
+            case 13:
+                AlgoritmhsDemo();
+                break;
+            case 14:
+                VectorDemo();
+                break;
+            case 15:
+                StackDemo();
                 break;
             default: System.out.println("Error!\n");
         }
