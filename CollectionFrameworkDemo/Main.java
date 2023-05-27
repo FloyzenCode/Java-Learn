@@ -417,6 +417,75 @@ public class Main {
         }
     }
 
+    public static void HashtableDemo() {
+        Hashtable<String, Double> balance = new Hashtable<String, Double>();
+        Enumeration<String> names;
+        String str;
+        double bal;
+
+        balance.put("John Doe", 3434.53);
+        balance.put("Martin Smith", 334.43);
+        balance.put("Maxim Gordon", 94.23);
+        balance.put("Alex Fam", 65.82);
+        balance.put("Carl Johnson", 123.15);
+
+        names = balance.keys();
+        while(names.hasMoreElements()) {
+            str = names.nextElement();
+            System.out.println(str + ": " + balance.get(str));
+        }
+        System.out.println();
+
+        bal = balance.get("John Doe");
+        balance.put("John Doe", bal + 1000);
+        System.out.println("New balance client John Doe: " + balance.get("John Doe"));
+    }
+
+    public static void HashtableIteratorDemo() {
+        Hashtable<String, Double> balance = new Hashtable<String, Double>();
+        String str;
+        double bal;
+
+        balance.put("John Doe", 3434.53);
+        balance.put("Martin Smith", 334.43);
+        balance.put("Maxim Gordon", 94.23);
+        balance.put("Alex Fam", 65.82);
+        balance.put("Carl Johnson", 123.15);
+
+        Set<String> set = balance.keySet();
+
+        // Get iterator
+        Iterator<String> itr = set.iterator();
+        while(itr.hasNext()) {
+            str = itr.next();
+            System.out.println(str + ": " + balance.get(str));
+        }
+        System.out.println();
+
+        bal = balance.get("John Doe");
+        balance.put("John Doe", bal+1000);
+        System.out.println("New balance client John Doe: " + balance.get("John Doe")); // new balance client! Use iterators
+    }
+
+    public static void PropertiesDemo() {
+        Properties capitals = new Properties();
+
+        capitals.setProperty("Russia", "Moscow");
+        capitals.setProperty("Carl", "San Andreas");
+        capitals.setProperty("John", "Los Angeles");
+        capitals.setProperty("Putin", "Russian Federation");
+        capitals.setProperty("Indian", "Fucking Indian Code!"); // im sorry, im clown!
+
+        Set<?> states = capitals.keySet();
+
+        for(Object name : states)
+            System.out.println("List: " + name + ": " + capitals.getProperty((String)name) + ".");
+        System.out.println(); // new line
+
+        String str = capitals.getProperty("Florida", "Not found");
+        System.out.println("Florida: " + str + ".");
+    }
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println();
@@ -437,6 +506,9 @@ public class Main {
                 13)      AlgoritmhsDemo();
                 14)      VectorDemo();
                 15)      StackDemo();
+                16)      HashtableDemo();
+                17)      HashtableIteratorDemo();
+                18)      PropertiesDemo();
                 """;
 
         System.out.println("Check methods:\n" + methods);
@@ -489,6 +561,15 @@ public class Main {
                 break;
             case 15:
                 StackDemo();
+                break;
+            case 16:
+                HashtableDemo();
+                break;
+            case 17:
+                HashtableIteratorDemo();
+                break;
+            case 18:
+                PropertiesDemo();
                 break;
             default: System.out.println("Error!\n");
         }
