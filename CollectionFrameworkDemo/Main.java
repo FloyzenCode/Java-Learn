@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+
 class Address {
     private String name = "";
     private String street = "";
@@ -24,7 +25,6 @@ class TComp implements Comparator<String> {
 
         i = aStr.lastIndexOf(' ');
         j = bStr.lastIndexOf(' ');
-
         k = aStr.substring(i).compareToIgnoreCase(bStr.substring(j));
         if(k == 0)
             return  aStr.compareToIgnoreCase(bStr);
