@@ -1,5 +1,5 @@
 import java.util.*;
-
+import java.io.*;
 class Address {
     private String name = "";
     private String street = "";
@@ -486,7 +486,61 @@ public class Main {
         System.out.println("Florida: " + str + ".");
     }
 
-    public static void main(String[] args) {
+    // Project PhoneBook Demo
+    public static void PhoneBook() throws IOException {
+        Properties ht = new Properties();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in, System.console().charset()));
+        String name, number;
+        FileInputStream fin = null;
+        boolean changed = false;
+
+        try {
+            fin = new FileInputStream("phonebook.dat");
+        } catch (FileNotFoundException e) {
+            // ignore
+        }
+
+        try {
+            if(fin != null) {
+                ht.load(fin);
+                fin.close();
+            }
+        } catch (IOException e) {
+            System.out.println("Error read file!");
+        }
+
+        do {
+          System.out.println("Input new name (input quit for exit): ");
+          name = br.readLine();
+
+          if(name.equals("quit")) continue;
+
+          System.out.println("Input number: ");
+          number = br.readLine();
+
+          ht.setProperty(name, number);
+          changed = true;
+        } while(!name.equals("quit"));
+
+        if(changed) {
+            FileOutputStream fout = new FileOutputStream("phonebook.dat");
+            ht.store(fout, "Number List");
+            fout.close();
+        }
+
+        // Search numbers names
+        do {
+            System.out.println("Input name (input quit for exit): ");
+            name = br.readLine();
+            if(name.equals("quit")) continue;
+
+            number = (String) ht.get(name);
+            System.out.println(number);
+        } while (!name.equals("quit"));
+
+    }
+
+    public static void main(String[] args) throws IOException {
         Scanner scan = new Scanner(System.in);
         System.out.println();
 
@@ -509,6 +563,7 @@ public class Main {
                 16)      HashtableDemo();
                 17)      HashtableIteratorDemo();
                 18)      PropertiesDemo();
+                19)      PhoneBook();
                 """;
 
         System.out.println("Check methods:\n" + methods);
@@ -570,6 +625,9 @@ public class Main {
                 break;
             case 18:
                 PropertiesDemo();
+                break;
+            case 19:
+                PhoneBook();
                 break;
             default: System.out.println("Error!\n");
         }
